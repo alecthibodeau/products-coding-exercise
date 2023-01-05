@@ -1,14 +1,18 @@
 import { useEffect, useState } from 'react';
-import './App.css';
 
 /* Components */
 import Product from './components/Product';
+import TabularFormat from './components/TabularFormat';
 
 /* Interfaces */
 import ProductProps from './interfaces/ProductProps';
 
+/* Styles */
+import './App.css';
+
 function App() {
   const [products, setProducts] = useState([]);
+  const [isTabular, setIsTabular] = useState<boolean>(false);
 
   const productsURL = 'https://dummyjson.com/products';
 
@@ -42,9 +46,16 @@ function App() {
 
   return (
     <div className="App">
-      <div className="products-container">
-        {products.map(renderProduct)}
-      </div>
+      <button
+        className="tabular-toggle-button"
+        name="toggle tabular"
+        onClick={() => setIsTabular(!isTabular)}
+      >
+        {isTabular ? 'See products with images' : 'See products in tabular format'}
+      </button>
+      {isTabular
+        ? <TabularFormat productsTabular={products}></TabularFormat>
+        : <div className="products-container">{products.map(renderProduct)}</div>}
     </div>
   );
 }

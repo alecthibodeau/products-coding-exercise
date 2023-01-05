@@ -1,0 +1,25 @@
+@use './variables' as *;
+
+.stars-outer {
+  display: inline-block;
+  position: relative;
+  margin-bottom: $size-small;
+  color: $star-yellow;
+}
+
+.stars-outer::before {
+  content: "\2606 \2606 \2606 \2606 \2606";
+}
+
+.stars-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.stars-inner::before {
+  content: "\2605 \2605 \2605 \2605 \2605";
+  color: $star-yellow;
+}

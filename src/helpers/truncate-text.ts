@@ -1,5 +1,6 @@
 function truncateText(text: string, characters: number) {
-  return text.length <= characters ? text : `${text.slice(0, characters)}\u2026`;
+  const ellipsis = '\u2026';
+  return text.length <= characters ? text : `${text.slice(0, characters)}${ellipsis}`;
 }
 
 export default truncateText;

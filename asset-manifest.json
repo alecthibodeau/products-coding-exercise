@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/products-coding-exercise/static/css/main.fac3cf6c.css",
-    "main.js": "/products-coding-exercise/static/js/main.3cd16936.js",
+    "main.css": "/products-coding-exercise/static/css/main.7aebefa7.css",
+    "main.js": "/products-coding-exercise/static/js/main.0923af51.js",
     "static/js/787.3a0058f1.chunk.js": "/products-coding-exercise/static/js/787.3a0058f1.chunk.js",
     "index.html": "/products-coding-exercise/index.html",
-    "main.fac3cf6c.css.map": "/products-coding-exercise/static/css/main.fac3cf6c.css.map",
-    "main.3cd16936.js.map": "/products-coding-exercise/static/js/main.3cd16936.js.map",
+    "main.7aebefa7.css.map": "/products-coding-exercise/static/css/main.7aebefa7.css.map",
+    "main.0923af51.js.map": "/products-coding-exercise/static/js/main.0923af51.js.map",
     "787.3a0058f1.chunk.js.map": "/products-coding-exercise/static/js/787.3a0058f1.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.fac3cf6c.css",
-    "static/js/main.3cd16936.js"
+    "static/css/main.7aebefa7.css",
+    "static/js/main.0923af51.js"
   ]
 }

@@ -21,6 +21,9 @@ function Product(props: ProductProps) {
         <div className="product-description">
           {truncateText(props.description)}
         </div>
+        <div className="stars-outer">
+          <div className="stars-inner"></div>
+        </div>
         <div className="product-price">
           {`$${props.price}`}
         </div>

@@ -44,3 +44,27 @@
 .product-price {
   font-size: 1.5rem;
 }
+
+.stars-outer {
+  display: inline-block;
+  position: relative;
+  color: $star-yellow;
+}
+
+.stars-outer::before {
+  content: "\2606 \2606 \2606 \2606 \2606";
+}
+
+.stars-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
+}
+
+.stars-inner::before {
+  content: "\2605 \2605 \2605 \2605 \2605";
+  color: $star-yellow;
+}

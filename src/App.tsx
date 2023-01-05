@@ -12,7 +12,7 @@ import './App.css';
 
 function App() {
   const [products, setProducts] = useState([]);
-  const [isTabular, setIsTabular] = useState<boolean>(false);
+  const [isTabular, setIsTabular] = useState<boolean>(true);
 
   const productsURL = 'https://dummyjson.com/products';
 
@@ -47,14 +47,13 @@ function App() {
   return (
     <div className="App">
       <button
-        className="tabular-toggle-button"
-        name="toggle tabular"
+        name="toggle products view"
         onClick={() => setIsTabular(!isTabular)}
       >
-        {isTabular ? 'See products with images' : 'See products in tabular format'}
+        {isTabular ? 'View products with images' : 'View products in tabular format'}
       </button>
       {isTabular
-        ? <TabularFormat productsTabular={products}></TabularFormat>
+        ? <TabularFormat productsTabular={products} />
         : <div className="products-container">{products.map(renderProduct)}</div>}
     </div>
   );

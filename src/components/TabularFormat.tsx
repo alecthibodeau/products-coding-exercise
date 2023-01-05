@@ -5,26 +5,43 @@ import Stars from './Stars';
 import ProductProps from '../interfaces/ProductProps';
 import TabularFormatProps from '../interfaces/TabularFormatProps';
 
+/* Helpers */
+import truncateText from '../helpers/truncate-text';
+
 function TabularFormat(props: TabularFormatProps) {
+  const charactersMax = 25;
 
   function renderProductRow(product: ProductProps) {
     return (
       <div key={`${product.id}${product.title}`} className="product-row">
-        <div>{product.id}</div>
-        <div>{product.brand}</div>
-        <div>{product.title}</div>
-        <div>{product.description}</div>
-        <div>{product.price}</div>
-        <div>{product.discountPercentage}</div>
-        <div>{product.stock}</div>
-        <div>{product.category}</div>
-        <Stars starsRating={product.rating}></Stars>
+        <span>{product.id}</span>
+        <span>{product.brand}</span>
+        <span>{product.title}</span>
+        <span>{truncateText(product.description, charactersMax)}</span>
+        <span>{`$${product.price}`}</span>
+        <span>{`${product.discountPercentage}%`}</span>
+        <span>{product.stock}</span>
+        <span>{product.category}</span>
+        <div className="tabular-stars">
+          <Stars starsRating={product.rating} />
+        </div>
       </div>
     )
   };
 
   return (
-    <div>
+    <div className="tabular-format">
+      <div className="product-row-header">
+        <span>Id</span>
+        <span>Brand</span>
+        <span>Title</span>
+        <span>Description</span>
+        <span>Price</span>
+        <span>Discount Percentage</span>
+        <span>Stock</span>
+        <span>Category</span>
+        <span>Rating</span>
+      </div>
       {props.productsTabular.map(renderProductRow)}
     </div>
   );

@@ -1,8 +1,10 @@
 /* Colors */
 $white: #fff;
-$light-gray: #d3d3d3;
+$border-gray: rgba(36, 41, 46, 0.4);
+$font-gray: rgb(36, 41, 46);
+$button-primary-main: #3871dc;
+$button-primary-shade: rgb(44, 90, 176);
 $star-yellow: #ffac2f;
-$button-blue: #2166d3;
 
 /* Dimensions */
 $size-small: .5rem;
@@ -10,5 +12,9 @@ $size-medium: 1rem;
 $product-dimension: 300px;
 
 /* Border */
-$border-standard: 1px solid $light-gray;
+$border-standard: 1px solid $border-gray;
 $border-radius-standard: 10px;
+
+/* Fonts */
+$font-family-primary: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+$font-color-primary: $font-gray;

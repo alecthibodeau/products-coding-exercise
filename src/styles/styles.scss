@@ -3,11 +3,21 @@
 @use './stars' as *;
 @use './tabular-format' as *;
 
-.tabular-toggle-button {
+.App {
+  font-family: $font-family-primary;
+  color: $font-color-primary;
+}
+
+button {
   margin: $size-medium;
   border: none;
   padding: $size-small $size-medium;
-  background-color: $button-blue;
+  background-color: $button-primary-main;
   color: $white;
+  font-family: $font-family-primary;
   font-weight: 700;
+
+  &:hover {
+    background-color: $button-primary-shade;
+  }
 }

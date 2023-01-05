@@ -2,12 +2,11 @@
 import ProductProps from '../interfaces/ProductProps';
 import Stars from './Stars';
 
-function Product(props: ProductProps) {
+/* Helpers */
+import truncateText from '../helpers/truncate-text';
 
-  function truncateText(text: string) {
-    const characters = 28;
-    return text.length <= characters ? text : `${text.slice(0, characters)}...`;
-  }
+function Product(props: ProductProps) {
+  const charactersMax = 28;
 
   return (
     <div className="product">
@@ -17,12 +16,12 @@ function Product(props: ProductProps) {
           {props.brand}
         </div>
         <div className="product-title">
-          {truncateText(props.title)}
+          {truncateText(props.title, charactersMax)}
         </div>
         <div className="product-description">
-          {truncateText(props.description)}
+          {truncateText(props.description, charactersMax)}
         </div>
-        <Stars starsRating={props.rating}></Stars>
+        <Stars starsRating={props.rating} />
         <div className="product-price">
           {`$${props.price}`}
         </div>

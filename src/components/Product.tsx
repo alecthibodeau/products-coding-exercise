@@ -1,3 +1,5 @@
+/** @jsxImportSource @emotion/react */
+
 /* Interfaces */
 import ProductProps from '../interfaces/ProductProps';
 
@@ -22,7 +24,7 @@ function Product(props: ProductProps) {
           {truncateText(props.description)}
         </div>
         <div className="stars-outer">
-          <div className="stars-inner"></div>
+          <div className="stars-inner" css={{width: `${props.rating * 20}%`}}></div>
         </div>
         <div className="product-price">
           {`$${props.price}`}

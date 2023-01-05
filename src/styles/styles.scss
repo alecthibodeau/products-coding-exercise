@@ -48,6 +48,7 @@
 .stars-outer {
   display: inline-block;
   position: relative;
+  margin-bottom: $size-small;
   color: $star-yellow;
 }
 
@@ -61,7 +62,6 @@
   left: 0;
   white-space: nowrap;
   overflow: hidden;
-  width: 0;
 }
 
 .stars-inner::before {

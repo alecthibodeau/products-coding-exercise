@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react';
 
 /* Components */
+import config from './config.json';
+
+/* Components */
 import Product from './components/Product';
 import TabularFormat from './components/TabularFormat';
 
@@ -11,18 +14,20 @@ import ProductProps from './interfaces/ProductProps';
 import './App.css';
 
 function App() {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState<ProductProps[]>([]);
   const [isTabular, setIsTabular] = useState<boolean>(true);
 
+  const localProducts: ProductProps[] = config.products;
   const productsURL = 'https://dummyjson.com/products';
 
   useEffect(() => {
-    fetch(productsURL)
-      .then(response => response.json())
-      .then(data => {
-        setProducts(data.products);
-      })
-      .catch(error => console.error(error));
+    // fetch(productsURL)
+    //   .then(response => response.json())
+    //   .then(data => {
+    //     setProducts(data.products);
+    //   })
+    //   .catch(error => console.error(error));
+    setProducts(localProducts);
   }, []);
 
   function renderProduct(product: ProductProps) {

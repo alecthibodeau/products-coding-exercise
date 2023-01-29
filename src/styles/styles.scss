@@ -4,14 +4,47 @@
 @use './tabular-format' as *;
 
 .App {
+  padding-top: $size-medium;
   font-family: $font-family-primary;
   color: $font-color-primary;
 }
 
 button {
-  margin: $size-medium;
   border: none;
   padding: $size-small $size-medium;
+}
+
+.products-source-countrol-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  button {
+    border-width: 2px;
+    border-style: solid;
+    margin-left: $size-medium;
+    background-color: $star-yellow;
+
+    &:first-of-type {
+      background-color: $button-green;
+
+      &:hover {
+        background-color: $button-green-shade;
+      }
+    }
+
+    &:last-of-type {
+      background-color: $button-lavender;
+
+      &:hover {
+        background-color: $button-lavender-shade;
+      }
+    }
+  }
+}
+
+.button-products-view {
+  margin: $size-medium;
   background-color: $button-primary-main;
   color: $white;
   font-family: $font-family-primary;

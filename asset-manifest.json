@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/products-coding-exercise/static/css/main.6bde5641.css",
-    "main.js": "/products-coding-exercise/static/js/main.b9fdf899.js",
+    "main.css": "/products-coding-exercise/static/css/main.60f4452b.css",
+    "main.js": "/products-coding-exercise/static/js/main.5879d39a.js",
     "static/js/787.3a0058f1.chunk.js": "/products-coding-exercise/static/js/787.3a0058f1.chunk.js",
     "index.html": "/products-coding-exercise/index.html",
-    "main.6bde5641.css.map": "/products-coding-exercise/static/css/main.6bde5641.css.map",
-    "main.b9fdf899.js.map": "/products-coding-exercise/static/js/main.b9fdf899.js.map",
+    "main.60f4452b.css.map": "/products-coding-exercise/static/css/main.60f4452b.css.map",
+    "main.5879d39a.js.map": "/products-coding-exercise/static/js/main.5879d39a.js.map",
     "787.3a0058f1.chunk.js.map": "/products-coding-exercise/static/js/787.3a0058f1.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.6bde5641.css",
-    "static/js/main.b9fdf899.js"
+    "static/css/main.60f4452b.css",
+    "static/js/main.5879d39a.js"
   ]
 }

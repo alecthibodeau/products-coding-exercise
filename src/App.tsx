@@ -61,7 +61,7 @@ function App() {
 
   return (
     <div className="App">
-      <div className="products-source-countrol-container">
+      <div className="products-source-control-container">
         <div>Get products from:</div>
         <div>
           <button

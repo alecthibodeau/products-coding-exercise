@@ -21,9 +21,13 @@ function App() {
   const [products, setProducts] = useState<ProductProps[]>([]);
   const [productsFromAPI, setProductsFromAPI] = useState<ProductProps[]>([]);
 
-  const darkGray = '#808080';
   const productsFromLocal: ProductProps[] = config.products;
   const productsURL = 'https://dummyjson.com/products';
+
+  const darkGray = '#808080';
+  const apiSource = 'api';
+  const localSource = 'local';
+  const randomSource= 'random';
   const transparent = 'transparent';
 
   useEffect(() => {
@@ -50,6 +54,7 @@ function App() {
         category={product.category}
         thumbnail={product.thumbnail}
         images={product.images}
+        isRandom={dataSource === randomSource}
       />
     )
   };
@@ -66,15 +71,22 @@ function App() {
         <div>
           <button
             name="get products from local"
-            css={{borderColor: dataSource === 'local' ? darkGray : transparent}}
-            onClick={() => loadData(productsFromLocal, 'local')}
+            css={{borderColor: dataSource === localSource ? darkGray : transparent}}
+            onClick={() => loadData(productsFromLocal, localSource)}
           >
             Local
           </button>
           <button
+            name="get products from random"
+            css={{borderColor: dataSource === randomSource ? darkGray : transparent}}
+            onClick={() => loadData(productsFromLocal, randomSource)}
+          >
+            Random
+          </button>
+          <button
             name="get products from API"
-            css={{borderColor: dataSource === 'api' ? darkGray : transparent}}
-            onClick={() => loadData(productsFromAPI, 'api')}
+            css={{borderColor: dataSource === apiSource ? darkGray : transparent}}
+            onClick={() => loadData(productsFromAPI, apiSource)}
           >
             API
           </button>

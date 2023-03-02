@@ -10,6 +10,7 @@ interface ProductProps {
   category: string;
   thumbnail: string;
   images: string[];
+  isRandom?: boolean;
 }
 
 export default ProductProps;

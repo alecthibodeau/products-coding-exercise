@@ -25,6 +25,10 @@ button {
     margin-left: $size-medium;
     background-color: $star-yellow;
 
+    &:hover {
+      background-color: $star-yellow-shade;
+    }
+
     &:first-of-type {
       background-color: $button-green;
 

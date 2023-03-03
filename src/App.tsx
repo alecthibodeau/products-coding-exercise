@@ -5,6 +5,9 @@ import { useEffect, useState } from 'react';
 /* Config */
 import config from './config.json';
 
+/* Constants */
+import randomWords from './constants';
+
 /* Components */
 import Product from './components/Product';
 import TabularFormat from './components/TabularFormat';
@@ -23,6 +26,7 @@ function App() {
 
   const productsFromLocal: ProductProps[] = config.products;
   const productsURL = 'https://dummyjson.com/products';
+  const productWords = randomWords.split(',').map(word => word);
 
   const darkGray = '#808080';
   const apiSource = 'api';
@@ -37,6 +41,7 @@ function App() {
         setProductsFromAPI(data.products);
       })
       .catch(error => console.error(error));
+    console.log(productWords);
   }, []);
 
   function renderProduct(product: ProductProps) {

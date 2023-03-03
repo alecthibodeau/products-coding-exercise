@@ -26,6 +26,7 @@ function Product(props: ProductProps) {
       <img
         className="product-image"
         src={imageLink}
+        alt={props.title}
       />
       <div className="product-info">
         <div className="product-brand">

@@ -19,7 +19,7 @@ function Product(props: ProductProps) {
     } else {
       setImageLink(props.thumbnail);
     }
-  }, [props.isRandom]);
+  }, [props.isRandom, props.thumbnail]);
 
   return (
     <div className="product">

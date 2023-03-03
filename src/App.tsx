@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import config from './config.json';
 
 /* Constants */
-import randomWords from './constants';
+// import randomWords from './constants';
 
 /* Components */
 import Product from './components/Product';
@@ -14,25 +14,40 @@ import TabularFormat from './components/TabularFormat';
 
 /* Interfaces */
 import ProductProps from './interfaces/ProductProps';
+import SourceProps from './interfaces/SourceProps';
 
 /* Styles */
 import './App.css';
 
 function App() {
-  const [dataSource, setDataSource] = useState<string>('');
+  const [dataSourceName, setDataSourceName] = useState<string>('');
   const [isTabular, setIsTabular] = useState<boolean>(true);
   const [products, setProducts] = useState<ProductProps[]>([]);
   const [productsFromAPI, setProductsFromAPI] = useState<ProductProps[]>([]);
 
   const productsFromLocal: ProductProps[] = config.products;
   const productsURL = 'https://dummyjson.com/products';
-  const productWords = randomWords.split(',').map(word => word);
+  // const productWords = randomWords.split(',');
 
   const darkGray = '#808080';
-  const apiSource = 'api';
-  const localSource = 'local';
-  const randomSource= 'random';
+  const apiSourceName = 'api';
+  const localSourceName = 'local';
+  const randomSourceName= 'random';
   const transparent = 'transparent';
+  const sources = [
+    {
+      name: localSourceName,
+      products: productsFromLocal
+    },
+    {
+      name: randomSourceName,
+      products: productsFromLocal
+    },
+    {
+      name: apiSourceName,
+      products: productsFromAPI
+    }
+  ];
 
   useEffect(() => {
     fetch(productsURL)
@@ -41,7 +56,6 @@ function App() {
         setProductsFromAPI(data.products);
       })
       .catch(error => console.error(error));
-    console.log(productWords);
   }, []);
 
   function renderProduct(product: ProductProps) {
@@ -59,14 +73,30 @@ function App() {
         category={product.category}
         thumbnail={product.thumbnail}
         images={product.images}
-        isRandom={dataSource === randomSource}
+        isRandom={dataSourceName === randomSourceName}
       />
     )
   };
 
-  function loadData(products: ProductProps[], source: string) {
+  function renderSourceButton(source: SourceProps) {
+    const buttonText = source.name === apiSourceName
+      ? source.name.toUpperCase()
+      : source.name.charAt(0).toUpperCase() + source.name.slice(1);
+    return (
+      <button
+        key={`${source.name} source button`}
+        name={`get products from ${source.name}`}
+        css={{borderColor: dataSourceName === source.name ? darkGray : transparent}}
+        onClick={() => loadData(source.products, source.name)}
+      >
+        {buttonText}
+      </button>
+    )
+  };
+
+  function loadData(products: ProductProps[], sourceName: string) {
     setProducts(products);
-    setDataSource(source);
+    setDataSourceName(sourceName);
   }
 
   return (
@@ -74,27 +104,7 @@ function App() {
       <div className="products-source-control-container">
         <div>Get products from:</div>
         <div>
-          <button
-            name="get products from local"
-            css={{borderColor: dataSource === localSource ? darkGray : transparent}}
-            onClick={() => loadData(productsFromLocal, localSource)}
-          >
-            Local
-          </button>
-          <button
-            name="get products from random"
-            css={{borderColor: dataSource === randomSource ? darkGray : transparent}}
-            onClick={() => loadData(productsFromLocal, randomSource)}
-          >
-            Random
-          </button>
-          <button
-            name="get products from API"
-            css={{borderColor: dataSource === apiSource ? darkGray : transparent}}
-            onClick={() => loadData(productsFromAPI, apiSource)}
-          >
-            API
-          </button>
+          {sources.map(renderSourceButton)}
         </div>
       </div>
       {products.length

@@ -50,5 +50,6 @@ function generateRandomProducts(length: number) {
 
 export default {
   truncateText,
+  capitalizeFirstLetter,
   generateRandomProducts
 };

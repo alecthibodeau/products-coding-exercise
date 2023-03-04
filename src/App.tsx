@@ -58,10 +58,10 @@ function App() {
   function renderSourceButton(source: SourceProps) {
     const buttonText = source.name === constants.apiSourceName
       ? source.name.toUpperCase()
-      : source.name.charAt(0).toUpperCase() + source.name.slice(1);
+      : helpers.capitalizeFirstLetter(source.name);
     return (
       <button
-        key={`${source.name} source button`}
+        key={`${source.name}SourceButton`}
         name={`get products from ${source.name}`}
         css={{borderColor: dataSourceName === source.name ? constants.darkGray : constants.transparent}}
         onClick={() => loadData(source.products, source.name)}
@@ -93,7 +93,7 @@ function App() {
               name="toggle products view"
               onClick={() => setIsTabular(!isTabular)}
             >
-              {isTabular ? 'View products with images' : 'View products in tabular format'}
+              {`View products ${isTabular ? 'with images' : 'in tabular format'}`}
             </button>
             {isTabular
               ? <TabularFormat productsTabular={products} />

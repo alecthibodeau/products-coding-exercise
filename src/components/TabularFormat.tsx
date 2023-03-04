@@ -6,7 +6,7 @@ import ProductProps from '../interfaces/ProductProps';
 import TabularFormatProps from '../interfaces/TabularFormatProps';
 
 /* Helpers */
-import truncateText from '../helpers/truncate-text';
+import helpers from '../helpers/helpers';
 
 function TabularFormat(props: TabularFormatProps) {
   const charactersMax = 25;
@@ -17,7 +17,7 @@ function TabularFormat(props: TabularFormatProps) {
         <span>{product.id}</span>
         <span>{product.brand}</span>
         <span>{product.title}</span>
-        <span>{truncateText(product.description, charactersMax)}</span>
+        <span>{helpers.truncateText(product.description, charactersMax)}</span>
         <span>{`$${product.price}`}</span>
         <span>{`${product.discountPercentage}%`}</span>
         <span>{product.stock}</span>

@@ -2,11 +2,8 @@
 
 import { useEffect, useState } from 'react';
 
-/* Config */
-import config from './config.json';
-
 /* Constants */
-// import randomWords from './constants';
+import constants from './constants';
 
 /* Components */
 import Product from './components/Product';
@@ -15,6 +12,9 @@ import TabularFormat from './components/TabularFormat';
 /* Interfaces */
 import ProductProps from './interfaces/ProductProps';
 import SourceProps from './interfaces/SourceProps';
+
+/* Helpers */
+import helpers from './helpers/helpers';
 
 /* Styles */
 import './App.css';
@@ -25,38 +25,16 @@ function App() {
   const [products, setProducts] = useState<ProductProps[]>([]);
   const [productsFromAPI, setProductsFromAPI] = useState<ProductProps[]>([]);
 
-  const productsFromLocal: ProductProps[] = config.products;
-  const productsURL = 'https://dummyjson.com/products';
-  // const productWords = randomWords.split(',');
+  useEffect(getFromAPI, []);
 
-  const darkGray = '#808080';
-  const apiSourceName = 'api';
-  const localSourceName = 'local';
-  const randomSourceName= 'random';
-  const transparent = 'transparent';
-  const sources = [
-    {
-      name: localSourceName,
-      products: productsFromLocal
-    },
-    {
-      name: randomSourceName,
-      products: productsFromLocal
-    },
-    {
-      name: apiSourceName,
-      products: productsFromAPI
-    }
-  ];
-
-  useEffect(() => {
-    fetch(productsURL)
-      .then(response => response.json())
-      .then(data => {
-        setProductsFromAPI(data.products);
-      })
-      .catch(error => console.error(error));
-  }, []);
+  function getFromAPI() {
+    fetch(constants.productsURL)
+    .then(response => response.json())
+    .then(data => {
+      setProductsFromAPI(data.products);
+    })
+    .catch(error => console.error(error));
+  }
 
   function renderProduct(product: ProductProps) {
     return (
@@ -73,20 +51,19 @@ function App() {
         category={product.category}
         thumbnail={product.thumbnail}
         images={product.images}
-        isRandom={dataSourceName === randomSourceName}
       />
     )
   };
 
   function renderSourceButton(source: SourceProps) {
-    const buttonText = source.name === apiSourceName
+    const buttonText = source.name === constants.apiSourceName
       ? source.name.toUpperCase()
       : source.name.charAt(0).toUpperCase() + source.name.slice(1);
     return (
       <button
         key={`${source.name} source button`}
         name={`get products from ${source.name}`}
-        css={{borderColor: dataSourceName === source.name ? darkGray : transparent}}
+        css={{borderColor: dataSourceName === source.name ? constants.darkGray : constants.transparent}}
         onClick={() => loadData(source.products, source.name)}
       >
         {buttonText}
@@ -95,6 +72,8 @@ function App() {
   };
 
   function loadData(products: ProductProps[], sourceName: string) {
+    if (sourceName === constants.apiSourceName) products = productsFromAPI;
+    if (sourceName === constants.randomSourceName) products = helpers.generateRandomProducts(30);
     setProducts(products);
     setDataSourceName(sourceName);
   }
@@ -104,7 +83,7 @@ function App() {
       <div className="products-source-control-container">
         <div>Get products from:</div>
         <div>
-          {sources.map(renderSourceButton)}
+          {constants.sources.map(renderSourceButton)}
         </div>
       </div>
       {products.length

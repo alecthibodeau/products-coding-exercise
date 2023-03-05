@@ -1,32 +1,6 @@
-/* Interfaces */
-import ProductProps from './interfaces/ProductProps';
-
-/* Config */
-import config from './config.json';
-
-const productsFromLocal: ProductProps[] = config.products;
-const productsURL = 'https://dummyjson.com/products';
 const darkGray = '#808080';
-const apiSourceName = 'api';
-const localSourceName = 'local';
-const randomSourceName= 'random';
 const transparent = 'transparent';
-
-const sources = [
-  {
-    name: localSourceName,
-    products: productsFromLocal
-  },
-  {
-    name: randomSourceName,
-    products: []
-  },
-  {
-    name: apiSourceName,
-    products: []
-  }
-];
-
+const productsURL = 'https://dummyjson.com/products';
 const productWords = [
   'active',
   'amount',
@@ -112,13 +86,8 @@ const productWords = [
 ]
 
 export default {
-  productsFromLocal,
   productsURL,
   darkGray,
-  apiSourceName,
-  localSourceName,
-  randomSourceName,
   transparent,
-  sources,
   productWords
 };

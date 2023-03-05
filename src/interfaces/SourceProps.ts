@@ -1,8 +1,7 @@
 import ProductProps from './ProductProps';
 
 interface SourceProps {
-  name: string;
-  products: ProductProps[];
+  [key: string]: ProductProps[];
 }
 
 export default SourceProps;

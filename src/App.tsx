@@ -2,6 +2,9 @@
 
 import { useEffect, useState } from 'react';
 
+/* Config */
+import config from './config.json';
+
 /* Constants */
 import constants from './constants';
 
@@ -25,15 +28,21 @@ function App() {
   const [products, setProducts] = useState<ProductProps[]>([]);
   const [productsFromAPI, setProductsFromAPI] = useState<ProductProps[]>([]);
 
+  const sources: SourceProps = {
+    local: config.products,
+    random: helpers.setRandomProducts(30),
+    api: productsFromAPI
+  };
+
   useEffect(getFromAPI, []);
 
-  function getFromAPI() {
+  function getFromAPI(): void {
     fetch(constants.productsURL)
-    .then(response => response.json())
-    .then(data => {
-      setProductsFromAPI(data.products);
-    })
-    .catch(error => console.error(error));
+      .then(response => response.json())
+      .then(data => {
+        setProductsFromAPI(data.products);
+      })
+      .catch(error => console.error(error));
   }
 
   function renderProduct(product: ProductProps) {
@@ -55,29 +64,27 @@ function App() {
     )
   };
 
-  function renderSourceButton(source: SourceProps) {
-    const buttonText = source.name === constants.apiSourceName
-      ? source.name.toUpperCase()
-      : helpers.capitalizeFirstLetter(source.name);
+  function renderSourceButton(sourceName: string) {
+    const buttonText = sourceName === 'api'
+      ? sourceName.toUpperCase()
+      : helpers.capitalizeFirstLetter(sourceName);
     return (
       <button
-        key={`${source.name}SourceButton`}
-        name={`get products from ${source.name}`}
-        css={{borderColor: dataSourceName === source.name
+        key={`${sourceName}SourceButton`}
+        name={`get products from ${sourceName}`}
+        css={{borderColor: dataSourceName === sourceName
           ? constants.darkGray
           : constants.transparent
         }}
-        onClick={() => loadData(source.products, source.name)}
+        onClick={() => loadData(sourceName)}
       >
         {buttonText}
       </button>
     )
   };
 
-  function loadData(products: ProductProps[], sourceName: string) {
-    if (sourceName === constants.apiSourceName) products = productsFromAPI;
-    if (sourceName === constants.randomSourceName) products = helpers.setRandomProducts(30);
-    setProducts(products);
+  function loadData(sourceName: string) {
+    setProducts(sources[sourceName]);
     setDataSourceName(sourceName);
   }
 
@@ -86,7 +93,7 @@ function App() {
       <div className="products-source-control-container">
         <div>Get products from:</div>
         <div>
-          {constants.sources.map(renderSourceButton)}
+          {Object.keys(sources).map(renderSourceButton)}
         </div>
       </div>
       {products.length

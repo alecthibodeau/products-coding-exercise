@@ -24,7 +24,7 @@ function setRandomDescription(wordCount: number) {
   let description = '';
   for (let i = 0; i < wordCount; i++) {
     const randomWord = setRandomItem(constants.productWords);
-    description += ` ${i ? randomWord : capitalizeFirstLetter(randomWord)}`;
+    description += i ? ` ${randomWord}` : capitalizeFirstLetter(randomWord);
   }
   return description;
 }

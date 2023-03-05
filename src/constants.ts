@@ -4,11 +4,8 @@ import ProductProps from './interfaces/ProductProps';
 /* Config */
 import config from './config.json';
 
-const randomWords = 'inverter,multitasking,vitamin,subscriber,proprietors,worthwhile,enrollment,crimson,radiologists,stair,puff,potato,travelers,apparent,flightplan,grantee,assessments,crucial,repeatable,glassware,anyplace,melee,remit,corporation,microbial,dictate,toy,botany,emerged,powder,interpretation,oaks,heavyweight,strikers,sectional,subsector,steep,tenant,conglomerate,retire,note,ballot,active,chalk,roll,sweep,decorative,extent,hour,formulate,hay,impact,circumstance,fruit,convert,delay,distortion,inside,border,avenue'
-const productWords = randomWords.split(',');
 const productsFromLocal: ProductProps[] = config.products;
 const productsURL = 'https://dummyjson.com/products';
-
 const darkGray = '#808080';
 const apiSourceName = 'api';
 const localSourceName = 'local';
@@ -30,14 +27,98 @@ const sources = [
   }
 ];
 
+const productWords = [
+  'active',
+  'amount',
+  'anyplace',
+  'apparent',
+  'assessments',
+  'avenue',
+  'ballot',
+  'blend',
+  'border',
+  'botany',
+  'chalk',
+  'circumstance',
+  'cold',
+  'confident',
+  'conglomerate',
+  'convert',
+  'corporation',
+  'crimson',
+  'crucial',
+  'decorative',
+  'delight',
+  'dictation',
+  'distillation',
+  'emerged',
+  'enrollment',
+  'extent',
+  'felt',
+  'flash',
+  'flightplan',
+  'formulate',
+  'fruit',
+  'gain',
+  'glassware',
+  'grantee',
+  'happy',
+  'hay',
+  'heavyweight',
+  'hour',
+  'impact',
+  'inside',
+  'inspirational',
+  'interpretation',
+  'inverter',
+  'lattice',
+  'microbial',
+  'mill',
+  'multiple',
+  'note',
+  'oaks',
+  'photography',
+  'pick',
+  'pies',
+  'pigeon',
+  'potato',
+  'powder',
+  'proprietors',
+  'puff',
+  'radiologist',
+  'remit',
+  'repeatable',
+  'retinue',
+  'roll',
+  'savannah',
+  'sectional',
+  'slice',
+  'sound',
+  'stair',
+  'steep',
+  'street',
+  'stripes',
+  'subscriber',
+  'subsector',
+  'sunlight',
+  'sweep',
+  'tenant',
+  'time',
+  'toy',
+  'travelers',
+  'vitamin',
+  'work',
+  'worthwhile'
+]
+
 export default {
-  productWords,
-  productsURL,
   productsFromLocal,
+  productsURL,
   darkGray,
   apiSourceName,
   localSourceName,
   randomSourceName,
+  transparent,
   sources,
-  transparent
+  productWords
 };

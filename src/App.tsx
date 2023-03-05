@@ -63,7 +63,10 @@ function App() {
       <button
         key={`${source.name}SourceButton`}
         name={`get products from ${source.name}`}
-        css={{borderColor: dataSourceName === source.name ? constants.darkGray : constants.transparent}}
+        css={{borderColor: dataSourceName === source.name
+          ? constants.darkGray
+          : constants.transparent
+        }}
         onClick={() => loadData(source.products, source.name)}
       >
         {buttonText}
@@ -73,7 +76,7 @@ function App() {
 
   function loadData(products: ProductProps[], sourceName: string) {
     if (sourceName === constants.apiSourceName) products = productsFromAPI;
-    if (sourceName === constants.randomSourceName) products = helpers.generateRandomProducts(30);
+    if (sourceName === constants.randomSourceName) products = helpers.setRandomProducts(30);
     setProducts(products);
     setDataSourceName(sourceName);
   }

@@ -8,7 +8,7 @@
 }
 
 .stars-outer::before {
-  content: "\2606 \2606 \2606 \2606 \2606";
+  content: '\2606 \2606 \2606 \2606 \2606';
 }
 
 .stars-inner {
@@ -20,6 +20,6 @@
 }
 
 .stars-inner::before {
-  content: "\2605 \2605 \2605 \2605 \2605";
+  content: '\2605 \2605 \2605 \2605 \2605';
   color: $star-yellow;
 }

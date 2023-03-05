@@ -1,3 +1,4 @@
+const unicodeEllipsis = '\u2026';
 const darkGray = '#808080';
 const transparent = 'transparent';
 const productsURL = 'https://dummyjson.com/products';
@@ -86,6 +87,7 @@ const productWords = [
 ]
 
 export default {
+  unicodeEllipsis,
   productsURL,
   darkGray,
   transparent,

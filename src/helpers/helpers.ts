@@ -53,8 +53,9 @@ function setRandomProducts(length: number) {
 }
 
 function truncateText(text: string, maxLength: number) {
-  const ellipsis = '\u2026';
-  return text.length <= maxLength ? text : `${text.slice(0, maxLength)}${ellipsis}`;
+  return text.length <= maxLength
+    ? text
+    : `${text.slice(0, maxLength)}${constants.unicodeEllipsis}`;
 }
 
 export default {

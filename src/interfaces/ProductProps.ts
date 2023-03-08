@@ -3,7 +3,7 @@ interface ProductProps {
   title: string;
   description: string;
   price: number;
-  discountPercentage: number;
+  discountPercentage: number | string;
   rating: number;
   stock: number;
   brand: string;

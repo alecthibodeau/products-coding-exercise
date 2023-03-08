@@ -8,6 +8,13 @@ function capitalizeFirstLetter(word: string): string {
   return word.charAt(0).toUpperCase() + word.slice(1);
 }
 
+function padNumber(numberToPad: number, places: number): string {
+  const wholeNumber = Math.floor(numberToPad);
+  const decimalFraction = numberToPad.toString().split('.')[1];
+  const paddedDecimalFraction = decimalFraction ? decimalFraction.padEnd(places, '0') : '00';
+  return `${wholeNumber}.${paddedDecimalFraction}`;
+}
+
 function setRandomItem(items: string[]): string {
   return items[Math.floor(Math.random() * items.length)];
 }
@@ -39,7 +46,7 @@ function setRandomProducts(length: number): ProductProps[] {
       title: capitalizeFirstLetter(setRandomItem(constants.productWords)),
       description: setRandomDescription(50),
       price: setRandomNumber(10, 991),
-      discountPercentage: setRandomNumberWithDecimalPlaces(5, 25, 2),
+      discountPercentage: padNumber(setRandomNumberWithDecimalPlaces(5, 25, 2), 2),
       rating: setRandomNumberWithDecimalPlaces(3, 5, 2),
       stock: setRandomNumber(1, 100),
       brand: capitalizeFirstLetter(setRandomItem(constants.productWords)),

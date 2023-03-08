@@ -36,7 +36,7 @@ function setRandomDescription(wordCount: number): string {
   return description;
 }
 
-function setRandomProducts(length: number): ProductProps[] {
+function setRandomProducts(length: number, decimalPlaces: number): ProductProps[] {
   const products = [];
   for (let i = 0; i < length; i++) {
     const width = setRandomNumber(300, 100);
@@ -46,8 +46,8 @@ function setRandomProducts(length: number): ProductProps[] {
       title: capitalizeFirstLetter(setRandomItem(constants.productWords)),
       description: setRandomDescription(50),
       price: setRandomNumber(10, 991),
-      discountPercentage: padNumber(setRandomNumberWithDecimalPlaces(5, 25, 2), 2),
-      rating: setRandomNumberWithDecimalPlaces(3, 5, 2),
+      discountPercentage: padNumber(setRandomNumberWithDecimalPlaces(5, 25, decimalPlaces), decimalPlaces),
+      rating: setRandomNumberWithDecimalPlaces(3, 5, decimalPlaces),
       stock: setRandomNumber(1, 100),
       brand: capitalizeFirstLetter(setRandomItem(constants.productWords)),
       category: capitalizeFirstLetter(setRandomItem(constants.productWords)),

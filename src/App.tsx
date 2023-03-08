@@ -30,7 +30,7 @@ function App(): JSX.Element {
 
   const sources: SourceProps = {
     local: config.products,
-    random: helpers.setRandomProducts(30),
+    random: helpers.setRandomProducts(30, 2),
     api: productsFromAPI
   };
 

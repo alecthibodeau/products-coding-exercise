@@ -5,7 +5,7 @@ import Stars from './Stars';
 /* Helpers */
 import helpers from '../helpers/helpers';
 
-function Product(props: ProductProps) {
+function Product(props: ProductProps): JSX.Element {
   const charactersMax = 28;
 
   return (

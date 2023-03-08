@@ -86,10 +86,12 @@ const productWords = [
   'worthwhile'
 ]
 
-export default {
+const constants =  {
   unicodeEllipsis,
   productsURL,
   darkGray,
   transparent,
   productWords
 };
+
+export default constants;

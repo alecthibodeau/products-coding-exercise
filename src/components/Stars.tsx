@@ -3,7 +3,7 @@
 /* Interfaces */
 import StarsProps from '../interfaces/StarsProps';
 
-function Stars(props: StarsProps) {
+function Stars(props: StarsProps): JSX.Element {
 
   return (
     <div className="stars-outer">

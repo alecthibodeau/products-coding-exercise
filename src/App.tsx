@@ -22,7 +22,7 @@ import helpers from './helpers/helpers';
 /* Styles */
 import './App.css';
 
-function App() {
+function App(): JSX.Element {
   const [dataSourceName, setDataSourceName] = useState<string>('');
   const [isTabular, setIsTabular] = useState<boolean>(true);
   const [products, setProducts] = useState<ProductProps[]>([]);
@@ -45,7 +45,7 @@ function App() {
       .catch(error => console.error(error));
   }
 
-  function renderProduct(product: ProductProps) {
+  function renderProduct(product: ProductProps): JSX.Element {
     return (
       <Product
         key={`${product.id}${product.title}`}
@@ -64,7 +64,7 @@ function App() {
     )
   };
 
-  function renderSourceButton(sourceName: string) {
+  function renderSourceButton(sourceName: string): JSX.Element {
     const buttonText = sourceName === 'api'
       ? sourceName.toUpperCase()
       : helpers.capitalizeFirstLetter(sourceName);
@@ -83,7 +83,7 @@ function App() {
     )
   };
 
-  function loadData(sourceName: string) {
+  function loadData(sourceName: string): void {
     setProducts(sources[sourceName]);
     setDataSourceName(sourceName);
   }

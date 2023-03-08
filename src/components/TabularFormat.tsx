@@ -8,10 +8,10 @@ import TabularFormatProps from '../interfaces/TabularFormatProps';
 /* Helpers */
 import helpers from '../helpers/helpers';
 
-function TabularFormat(props: TabularFormatProps) {
+function TabularFormat(props: TabularFormatProps): JSX.Element {
   const charactersMax = 25;
 
-  function renderProductRow(product: ProductProps) {
+  function renderProductRow(product: ProductProps): JSX.Element {
     return (
       <div key={`${product.id}${product.title}`} className="product-row">
         <span>{product.id}</span>

@@ -4,23 +4,23 @@ import constants from '../constants';
 /* Interfaces */
 import ProductProps from '../interfaces/ProductProps';
 
-function capitalizeFirstLetter(word: string) {
+function capitalizeFirstLetter(word: string): string {
   return word.charAt(0).toUpperCase() + word.slice(1);
 }
 
-function setRandomItem(items: string[]) {
+function setRandomItem(items: string[]): string {
   return items[Math.floor(Math.random() * items.length)];
 }
 
-function setRandomNumber(minimum: number, range: number) {
+function setRandomNumber(minimum: number, range: number): number {
   return Math.floor(Math.random() * range) + minimum;
 }
 
-function setRandomNumberWithDecimalPlaces(minimum: number, maximum: number, places: number) {
+function setRandomNumberWithDecimalPlaces(minimum: number, maximum: number, places: number): number {
   return +(Math.random() * (maximum - minimum) + minimum).toFixed(places);
 }
 
-function setRandomDescription(wordCount: number) {
+function setRandomDescription(wordCount: number): string {
   let description = '';
   for (let i = 0; i < wordCount; i++) {
     const randomWord = setRandomItem(constants.productWords);
@@ -29,7 +29,7 @@ function setRandomDescription(wordCount: number) {
   return description;
 }
 
-function setRandomProducts(length: number) {
+function setRandomProducts(length: number): ProductProps[] {
   const products = [];
   for (let i = 0; i < length; i++) {
     const width = setRandomNumber(300, 100);
@@ -52,14 +52,16 @@ function setRandomProducts(length: number) {
   return products;
 }
 
-function truncateText(text: string, maxLength: number) {
+function truncateText(text: string, maxLength: number): string {
   return text.length <= maxLength
     ? text
     : `${text.slice(0, maxLength)}${constants.unicodeEllipsis}`;
 }
 
-export default {
+const helpers = {
   capitalizeFirstLetter,
   setRandomProducts,
   truncateText
 };
+
+export default helpers;
